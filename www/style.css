@@ -1,0 +1,47 @@
+body {
+    background-color: #2E3440;
+    font-family: "Roboto", sans-serif;
+    color: #ECEFF4;
+    margin: 30px;
+}
+
+a:link {
+    color: #88C0D0;
+    text-decoration: none;
+}
+a:visited {
+    color: #B48EAD;
+    text-decoration: none;
+}
+a:hover {
+    color: #A3BE8C;
+    text-decoration: none;
+}
+
+.hometitle {
+    color: #ECEFF4;
+    background: #2E3440;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    border: 3px solid #EBCB8B;
+    padding: 10px;
+}
+
+.subtitle {
+    color: #ECEFF4;
+    background: #2E3440;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+    padding: 10px;
+}
+
+.testlinks {
+    color: #ECEFF4;
+    background: #2E3440;
+    margin: auto;
+    text-align: left;
+    width: 70%;
+    padding: 10px;
+}
