@@ -1,6 +1,6 @@
 Simple LAMP stack using Docker containers 
 
-# How To: (Windows and Mac)
+# How To:
 
 ## Install
 1. Install **docker desktop** from https://www.docker.com/products/docker-desktop/
