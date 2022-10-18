@@ -1,0 +1,53 @@
+# Compose file
+services:
+  php-apache:
+    image: php:apache                         # Apache and PHP image
+    container_name: php-apache
+    ports:
+      - 127.0.0.1:80:80                       # Bind localhost port 80 to container port 80
+    volumes:
+      - ./www:/var/www/html                   # Mount the ./www directory to the web root
+    networks:
+      - net
+    links:
+      - 'mariadb'
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 127.0.0.1:3306:3306
+    environment:
+      TZ: "Europe/Rome"                       # Set the timezone
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"        # Set to "yes" to allow empty passwords
+      MYSQL_ROOT_PASSWORD: "rootpassword"     # Root Password
+      MYSQL_USER: 'user'                      # Database User
+      MYSQL_PASSWORD: 'userpassword'          # User Password
+      MYSQL_DATABASE: 'db'                    # Database name
+    networks:
+      - net
+
+  phpmydamin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - 127.0.0.1:81:80                       # bind localhost port 81 to container port 80
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mariadb                       # Database Host container
+      PMA_PORT: 3306                          # Default MariaDB port
+      PMA_USER: 'user'                        # MariaDB user as specified in MYSQL_USER
+      PMA_PASSWORD: 'userpassword'            # MariaDB password as specified in MYSQL_PASSWORD
+    networks:
+      - net
+    links:
+      - 'mariadb'
+
+
+networks:
+  net:
+    driver: bridge
+
+#EOF
