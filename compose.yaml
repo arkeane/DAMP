@@ -1,4 +1,3 @@
-# Compose file
 services:
   php-apache:
     image: php:apache                         # Apache and PHP image
@@ -6,7 +5,7 @@ services:
     ports:
       - 127.0.0.1:80:80                       # Bind localhost port 80 to container port 80
     volumes:
-      - ./www:/var/www/html                   # Mount the ./www directory to the web root
+      - ./www:/var/www/html                   # Mount the ./www directory to the web root (Will be created if it doesn't exist)
     networks:
       - net
     links:
@@ -16,7 +15,7 @@ services:
     image: mariadb:latest
     container_name: mariadb
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db:/var/lib/mysql                   # Mount the ./db directory to the db directory (Will be created if it doesn't exist)
     ports:
       - 127.0.0.1:3306:3306
     environment:
@@ -49,5 +48,3 @@ services:
 networks:
   net:
     driver: bridge
-
-#EOF
