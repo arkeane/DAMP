@@ -1,9 +1,13 @@
+Simple LAMP stack using Docker containers 
+
 # How To: (Windows and Mac)
 
 ## Install
 1. Install **docker desktop** from https://www.docker.com/products/docker-desktop/
+- Remember to enable Virtualization in BIOS if using Windows, wsl2 might be useful
 2. Clone the repository and if wanted rename the folder.
 3. Edit if needed the ```compose.yaml``` file (mantain tabs and spaces while editing)
+   - Change MariaDB user, password, and database_name
 
 ## Run
 4. With docker desktop running, open a terminal and navigate to the repo folder
