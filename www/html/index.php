@@ -18,6 +18,11 @@
     <li><a href='http://localhost:81/'>phpMyAdmin</a>
     </div>
 
+    <?php
+        $testfile = fopen("../test.txt", "r") or die("Unable to open file!");
+        echo fread($testfile,filesize("../test.txt"));
+    ?>
+
 </body>
 
 </html>
