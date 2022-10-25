@@ -5,7 +5,7 @@ services:
     ports:
       - 127.0.0.1:80:80                       # Bind localhost port 80 to container port 80
     volumes:
-      - ./www:/var/www/html/                  # Mount the ./www directory to the web root (Will be created if it doesn't exist)
+      - ./html:/var/www/html/                  # Mount the ./html directory to the web root (Will be created if it doesn't exist)
     networks:
       - net
     links:
