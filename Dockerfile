@@ -1,5 +1,7 @@
 FROM php:apache
 
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 RUN apt-get update
 
 RUN docker-php-ext-install mysqli
