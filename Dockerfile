@@ -1,6 +1,6 @@
 FROM php:apache
 
-RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini && echo "session.save_path = "/var/tmp/"" >> $PHP_INI_DIR/php.ini
 
 RUN apt-get update
 
