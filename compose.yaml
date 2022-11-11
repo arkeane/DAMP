@@ -55,4 +55,4 @@ networks:
     driver: bridge
 
 volumes:
-  maridb_data:
+  mariadb_data:
