@@ -25,7 +25,7 @@ services:
     image: mariadb:latest
     container_name: mariadb
     volumes:
-      - ./db:/var/lib/mysql                   # Mount the ./db directory to the db directory (Will be created if it doesn't exist)
+      - mariadb_data:/var/lib/mysql           # save db in volume
     environment:
       TZ: "Europe/Rome"                       # Set the timezone
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"        # Set to "yes" to allow empty passwords
@@ -53,3 +53,6 @@ services:
 networks:
   net:
     driver: bridge
+
+volumes:
+  maridb_data:
