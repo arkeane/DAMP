@@ -1,16 +1,25 @@
 services:
-  php-apache:
-    build: .                                  # Apache and PHP image
-    container_name: php-apache
-    ports:
-      - 127.0.0.1:80:80                       # Bind localhost port 80 to container port 80
-    volumes:
-      - ./www:/var/www/
-      - ./www/html:/var/www/html/                  # Mount the ./html directory to the web root (Will be created if it doesn't exist)
+  php:
+    build: './php/'
+    container_name: php
     networks:
       - net
-    links:
-      - 'mariadb'
+    volumes:
+      - ./public_html/:/var/www/html/
+  
+  apache:
+    build: './apache/'
+    container_name: apache
+    depends_on:
+      - php
+      - mariadb
+      - phpmyadmin
+    networks:
+      - net
+    ports:
+      - "127.0.0.1:80:80"
+    volumes:
+      - ./public_html/:/var/www/html/
 
   mariadb:
     image: mariadb:latest
@@ -27,11 +36,11 @@ services:
     networks:
       - net
 
-  phpmydamin:
+  phpmyadmin:
     image: phpmyadmin:latest
     container_name: phpmyadmin
     ports:
-      - 127.0.0.1:81:80                       # bind localhost port 81 to container port 80
+      - "127.0.0.1:81:80"
     environment:
       PMA_ARBITRARY: 1
       PMA_HOST: mariadb                       # Database Host container
@@ -40,9 +49,6 @@ services:
       PMA_PASSWORD: 'userpassword'            # MariaDB password as specified in MYSQL_PASSWORD
     networks:
       - net
-    links:
-      - 'mariadb'
-
 
 networks:
   net:

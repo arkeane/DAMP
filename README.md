@@ -20,19 +20,18 @@ Simple LAMP stack using Docker containers
 project/
 ├── compose.yaml
 ├── db/
-└── www/
+└── public_html/
 ```
 
-5. Insert your own php files inside ```www/```
+5. Insert your own php files inside ```public_html/```
 6. To stop the containers run ```docker-compose down" or "docker compose down``` data will not be lost.
 
-To delete all database and php files just delete the ```www/``` and ```db/``` they will be recreated when running ```docker compose up -d```
+To delete all database and php files just delete the ```public_html/``` and ```db/``` they will be recreated when running ```docker compose up -d```
 
 ## Adding PHP extensions
 
-1. Edit ```Dockerfile``` to add other php extensions
+1. Edit ```php/Dockerfile``` to add other php extensions
    - Use ```RUN apt install "required programs"``` to prepare environment
    - Use ```RUN docker-php-ext-install extension``` to install extension
-   - Use ```RUN docker-php-ext-enable extension``` to enable extension
 
 2. Run ```docker-compose build``` or ```docker compose build```
