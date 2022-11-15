@@ -6,7 +6,7 @@ services:
       - net
     volumes:
       - ./public_html/:/var/www/html/
-  
+
   apache:
     build: './apache/'
     container_name: apache
@@ -25,14 +25,14 @@ services:
     image: mariadb:latest
     container_name: mariadb
     volumes:
-      - mariadb_data:/var/lib/mysql           # save db in volume
+      - mariadb_data:/var/lib/mysql                 # save db in volume
     environment:
-      TZ: "Europe/Rome"                       # Set the timezone
-      MYSQL_ALLOW_EMPTY_PASSWORD: "no"        # Set to "yes" to allow empty passwords
-      MYSQL_ROOT_PASSWORD: "rootpassword"     # Root Password
-      MYSQL_USER: 'user'                      # Database User
-      MYSQL_PASSWORD: 'userpassword'          # User Password
-      MYSQL_DATABASE: 'db'                    # Database name
+      TZ: "Europe/Rome"                             # Set the timezone
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"              # Set to "yes" to allow empty passwords
+      MYSQL_ROOT_PASSWORD: "rootpwdtobechanged"     # Root Password
+      MYSQL_USER: 'usertobechanged'                 # Database User
+      MYSQL_PASSWORD: 'userpwdtobechanged'          # User Password
+      MYSQL_DATABASE: 'dbnametobechanged'           # Database name
     networks:
       - net
 
@@ -43,10 +43,10 @@ services:
       - "127.0.0.1:81:80"
     environment:
       PMA_ARBITRARY: 1
-      PMA_HOST: mariadb                       # Database Host container
-      PMA_PORT: 3306                          # Default MariaDB port
-      PMA_USER: 'user'                        # MariaDB user as specified in MYSQL_USER
-      PMA_PASSWORD: 'userpassword'            # MariaDB password as specified in MYSQL_PASSWORD
+      PMA_HOST: mariadb                             # Database Host container
+      PMA_PORT: 3306                                # Default MariaDB port
+      PMA_USER: 'user'                              # MariaDB user as specified in MYSQL_USER
+      PMA_PASSWORD: 'userpassword'                  # MariaDB password as specified in MYSQL_PASSWORD
     networks:
       - net
 

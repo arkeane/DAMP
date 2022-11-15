@@ -1,4 +1,4 @@
-Simple LAMP stack using Docker containers 
+Simple LAMP stack using Docker containers
 
 # How To:
 
