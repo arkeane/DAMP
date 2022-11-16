@@ -29,10 +29,10 @@ services:
     environment:
       TZ: "Europe/Rome"                             # Set the timezone
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"              # Set to "yes" to allow empty passwords
-      MYSQL_ROOT_PASSWORD: "rootpwdtobechanged"     # Root Password
-      MYSQL_USER: 'usertobechanged'                 # Database User
-      MYSQL_PASSWORD: 'userpwdtobechanged'          # User Password
-      MYSQL_DATABASE: 'dbnametobechanged'           # Database name
+      MYSQL_ROOT_PASSWORD: "root"     # Root Password
+      MYSQL_USER: 'user'                 # Database User
+      MYSQL_PASSWORD: 'user'          # User Password
+      MYSQL_DATABASE: 'demo'           # Database name
     networks:
       - net
 
@@ -42,11 +42,8 @@ services:
     ports:
       - "127.0.0.1:81:80"
     environment:
-      PMA_ARBITRARY: 1
       PMA_HOST: mariadb                             # Database Host container
       PMA_PORT: 3306                                # Default MariaDB port
-      PMA_USER: 'user'                              # MariaDB user as specified in MYSQL_USER
-      PMA_PASSWORD: 'userpassword'                  # MariaDB password as specified in MYSQL_PASSWORD
     networks:
       - net
 

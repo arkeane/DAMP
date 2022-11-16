@@ -1,7 +1,7 @@
 <?php
 $servername = "mariadb";
-$username = "usertobechanged";
-$password = "userpwdtobechanged";
+$username = "user";
+$password = "user";
 
 $conn = new mysqli($servername, $username, $password);
 
